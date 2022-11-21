@@ -3,10 +3,17 @@
 # Modified from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
 # Keep Library Folder
-#/[Ll]ibrary/
+/[Ll]ibrary/APIUpdater/
 /[Ll]ibrary/Artifacts/
-/[Ll]ibrary/ArtifactDB*
+/[Ll]ibrary/BuildPlayerData/
 /[Ll]ibrary/PackageCache/
+/[Ll]ibrary/PackageManager/
+/[Ll]ibrary/PlayerDataCache/
+/[Ll]ibrary/ScriptAssemblies/
+/[Ll]ibrary/ShaderCache/
+/[Ll]ibrary/StateCache/
+/[Ll]ibrary/TempArtifacts/
+/[Ll]ibrary/UIElements/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
