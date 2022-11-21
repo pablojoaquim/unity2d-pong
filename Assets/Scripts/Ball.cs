@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
@@ -68,22 +69,31 @@ public class Ball : MonoBehaviour
             speed_delta++;
         }
 
+        // Hit the left wall?
+        if (col.gameObject.name == "goalLeft") {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (col.gameObject.name == "goalRight") {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 
-    float hitFactor(Vector2 ballPos, Vector2 racketPos,
-                float racketHeight) {
-    // ascii art:
-    // ||  1 <- at the top of the racket
-    // ||
-    // ||  0 <- at the middle of the racket
-    // ||
-    // || -1 <- at the bottom of the racket
-    float factor = (ballPos.y - racketPos.y) / racketHeight;
-    Debug.Log(ballPos);
-    Debug.Log(racketPos);
-    Debug.Log(racketHeight);
-    Debug.Log(factor);
+    float hitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight) 
+    {
+        // ascii art:
+        // ||  1 <- at the top of the racket
+        // ||
+        // ||  0 <- at the middle of the racket
+        // ||
+        // || -1 <- at the bottom of the racket
+        float factor = (ballPos.y - racketPos.y) / racketHeight;
+        Debug.Log(ballPos);
+        Debug.Log(racketPos);
+        Debug.Log(racketHeight);
+        Debug.Log(factor);
 
-    return factor;
-}
+        return factor;
+    }
 }
