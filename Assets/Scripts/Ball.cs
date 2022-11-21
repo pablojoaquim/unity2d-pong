@@ -7,11 +7,15 @@ public class Ball : MonoBehaviour
     public float speed = 30;
     public AudioClip bounceAudioEffect;    // Add your Audi Clip Here;
 
+    private float speed_delta;
+
     // Start is called before the first frame update
     void Start()
     {
         float x = Random.Range(0,2) == 0? -1 : 1;
         float y = Random.Range(0,2) == 0? -1 : 1;
+
+        speed_delta = 0;
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(speed*x, speed*y);
     }
@@ -35,9 +39,13 @@ public class Ball : MonoBehaviour
             Vector2 dir = new Vector2(1, y).normalized;
 
             // Set Velocity with dir * speed
-            GetComponent<Rigidbody2D>().velocity = dir * speed;
-
+            GetComponent<Rigidbody2D>().velocity = dir * (speed + speed_delta);
+            
+            // Play the sound effect
             GetComponent<AudioSource>().Play();
+
+            // Increment the ball speed on every hit
+            speed_delta++;
         }
 
         // Hit the right Racket?
@@ -51,9 +59,13 @@ public class Ball : MonoBehaviour
             Vector2 dir = new Vector2(-1, y).normalized;
 
             // Set Velocity with dir * speed
-            GetComponent<Rigidbody2D>().velocity = dir * speed;
+            GetComponent<Rigidbody2D>().velocity = dir * (speed + speed_delta);
             
+            // Play the sound effect
             GetComponent<AudioSource>().Play();
+
+            // Increment the ball speed on every hit
+            speed_delta++;
         }
 
     }
