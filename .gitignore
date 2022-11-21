@@ -2,18 +2,11 @@
 #
 # Modified from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-# Keep Library Folder
-/[Ll]ibrary/APIUpdater/
-/[Ll]ibrary/Artifacts/
-/[Ll]ibrary/BuildPlayerData/
-/[Ll]ibrary/PackageCache/
-/[Ll]ibrary/PackageManager/
-/[Ll]ibrary/PlayerDataCache/
-/[Ll]ibrary/ScriptAssemblies/
-/[Ll]ibrary/ShaderCache/
+# Remove Library Folder, except StatCache and LastSceneManagerSetup.txt
+/[Ll]ibrary/
 /[Ll]ibrary/StateCache/
-/[Ll]ibrary/TempArtifacts/
-/[Ll]ibrary/UIElements/
+!/[Ll]ibrary/LastSceneManagerSetup.txt
+
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
