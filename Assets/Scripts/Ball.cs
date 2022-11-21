@@ -10,6 +10,11 @@ public class Ball : MonoBehaviour
 
     private float speed_delta;
 
+    private int scorePlayerLeft;
+    private int scorePlayerRight;
+
+    public GameObject canvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +22,9 @@ public class Ball : MonoBehaviour
         float y = Random.Range(0,2) == 0? -1 : 1;
 
         speed_delta = 0;
+
+        scorePlayerLeft = 0;
+        scorePlayerRight = 0;
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(speed*x, speed*y);
     }
@@ -47,6 +55,7 @@ public class Ball : MonoBehaviour
 
             // Increment the ball speed on every hit
             speed_delta++;
+            AddScore_PlayerLeft();
         }
 
         // Hit the right Racket?
@@ -67,6 +76,7 @@ public class Ball : MonoBehaviour
 
             // Increment the ball speed on every hit
             speed_delta++;
+            AddScore_PlayerRight();
         }
 
         // Hit the left wall?
@@ -96,4 +106,17 @@ public class Ball : MonoBehaviour
 
         return factor;
     }
+
+    void AddScore_PlayerLeft()
+    {
+        scorePlayerLeft++;
+        canvas.GetComponent<UIManager>().updateScorePlayerLeft(scorePlayerLeft);
+    }
+
+    void AddScore_PlayerRight()
+    {
+        scorePlayerRight++;
+        canvas.GetComponent<UIManager>().updateScorePlayerRight(scorePlayerRight);
+    }
+
 }
