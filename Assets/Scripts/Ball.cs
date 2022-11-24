@@ -81,11 +81,13 @@ public class Ball : MonoBehaviour
 
         // Hit the left wall?
         if (col.gameObject.name == "goalLeft") {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameOver();
         }
 
         if (col.gameObject.name == "goalRight") {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameOver();
         }
 
     }
@@ -117,6 +119,11 @@ public class Ball : MonoBehaviour
     {
         scorePlayerRight++;
         canvas.GetComponent<UIManager>().updateScorePlayerRight(scorePlayerRight);
+    }
+
+    void GameOver()
+    {
+        canvas.GetComponent<UIManager>().updateGameOver();
     }
 
 }
